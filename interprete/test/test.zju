@@ -1,0 +1,7 @@
+programa nuevo{
+	si(false || false){
+		mostrar funciona;
+	} sino {
+		mostrar no_funciona;
+	}
+}
