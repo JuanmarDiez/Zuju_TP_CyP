@@ -34,6 +34,12 @@ public interface ZujuVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVar_decl(ZujuParser.Var_declContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link ZujuParser#tipo_dato}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTipo_dato(ZujuParser.Tipo_datoContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link ZujuParser#var_asignacion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -51,6 +57,12 @@ public interface ZujuVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitCondicional(ZujuParser.CondicionalContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link ZujuParser#bucle_para}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBucle_para(ZujuParser.Bucle_paraContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ZujuParser#enunciado}.
 	 * @param ctx the parse tree

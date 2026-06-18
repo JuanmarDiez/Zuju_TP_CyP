@@ -1,6 +1,9 @@
 package com.lenguaje.zuju.interprete.ast;
 
 import java.util.List;
+import java.util.Map;
+
+import com.lenguaje.zuju.interprete.SimboloVariable;
 
 public class Si implements ASTNode {
 	private ASTNode condition;
@@ -19,14 +22,14 @@ public class Si implements ASTNode {
 
 
 	@Override
-	public Object execute() {
-		if((boolean)condition.execute()) {
+	public Object execute(Map<String, SimboloVariable> symbolTable) {
+		if((boolean)condition.execute(symbolTable)) {
 			for(ASTNode n:body) {
-				n.execute();
+				n.execute(symbolTable);
 			}
 		}else {
 			for(ASTNode n:elseBody) {
-				n.execute();
+				n.execute(symbolTable);
 			}
 		}
 		return null;

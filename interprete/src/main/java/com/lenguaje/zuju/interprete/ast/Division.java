@@ -1,5 +1,9 @@
 package com.lenguaje.zuju.interprete.ast;
 
+import java.util.Map;
+
+import com.lenguaje.zuju.interprete.SimboloVariable;
+
 public class Division implements ASTNode {
 	private ASTNode operand1;
 	private ASTNode operand2;
@@ -11,9 +15,9 @@ public class Division implements ASTNode {
 	}
 
 	@Override
-	public Object execute() {
-		if(((Number)operand2.execute()).doubleValue() != 0) {
-			double resultado = ((Number)operand1.execute()).doubleValue() / ((Number)operand2.execute()).doubleValue();
+	public Object execute(Map<String, SimboloVariable> symbolTable) {
+		if(((Number)operand2.execute(symbolTable)).doubleValue() != 0) {
+			double resultado = ((Number)operand1.execute(symbolTable)).doubleValue() / ((Number)operand2.execute(symbolTable)).doubleValue();
 			if (resultado % 1 == 0) {
 				return (int) resultado;
 			}
@@ -22,7 +26,7 @@ public class Division implements ASTNode {
 			}
 		}
 		else {
-			return "No es posible la division entre 0";
+			throw new ArithmeticException("Error semantico: No se admite la division entre 0");
 		}
 	}
 

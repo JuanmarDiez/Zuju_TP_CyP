@@ -4,21 +4,23 @@ import java.util.Map;
 
 import com.lenguaje.zuju.interprete.SimboloVariable;
 
-public class Mostrar implements ASTNode {
-	private ASTNode data;
+public class VarDecl implements ASTNode {
+	private String tipo;
+	private String name;
 	
 	
-	
-	public Mostrar(ASTNode data) {
+
+	public VarDecl(String tipo, String name) {
 		super();
-		this.data = data;
+		this.tipo = tipo;
+		this.name = name;
 	}
 
 
 
 	@Override
 	public Object execute(Map<String, SimboloVariable> symbolTable) {
-		System.out.println(data.execute(symbolTable));
+		symbolTable.put(name, new SimboloVariable(tipo,null));
 		return null;
 	}
 

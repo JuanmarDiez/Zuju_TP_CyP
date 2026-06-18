@@ -1,5 +1,9 @@
 package com.lenguaje.zuju.interprete.ast;
 
+import java.util.Map;
+
+import com.lenguaje.zuju.interprete.SimboloVariable;
+
 public class Constante implements ASTNode {
 	private Object value;
 	
@@ -13,7 +17,7 @@ public class Constante implements ASTNode {
 
 
 	@Override
-	public Object execute() {
+	public Object execute(Map<String, SimboloVariable> symbolTable) {
 		return value;
 	}
 

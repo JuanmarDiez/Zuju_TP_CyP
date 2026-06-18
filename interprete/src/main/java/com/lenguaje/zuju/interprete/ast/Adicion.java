@@ -1,5 +1,9 @@
 package com.lenguaje.zuju.interprete.ast;
 
+import java.util.Map;
+
+import com.lenguaje.zuju.interprete.SimboloVariable;
+
 public class Adicion implements ASTNode {
 	private ASTNode operand1;
 	private ASTNode operand2;
@@ -11,12 +15,12 @@ public class Adicion implements ASTNode {
 	}
 
 	@Override
-	public Object execute() {
-		if(Integer.class.isInstance(operand1.execute()) && Integer.class.isInstance(operand2.execute())) {
-			return (int)operand1.execute() + (int) operand2.execute();
+	public Object execute(Map<String, SimboloVariable> symbolTable) {
+		if(Integer.class.isInstance(operand1.execute(symbolTable)) && Integer.class.isInstance(operand2.execute(symbolTable))) {
+			return (int)operand1.execute(symbolTable) + (int) operand2.execute(symbolTable);
 		}
 		else {
-			return ((Number)operand1.execute()).doubleValue() + ((Number)operand2.execute()).doubleValue();
+			return ((Number)operand1.execute(symbolTable)).doubleValue() + ((Number)operand2.execute(symbolTable)).doubleValue();
 		}
 	}
 

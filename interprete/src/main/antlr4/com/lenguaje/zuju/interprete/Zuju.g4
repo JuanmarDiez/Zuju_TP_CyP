@@ -7,7 +7,7 @@ grammar Zuju;
 }
 
 @parser::members {
-	Map<String, Object> symbolTable = new HashMap<String, Object>();
+	Map<String, SimboloVariable> symbolTable = new HashMap<String, SimboloVariable>();
 }
 
 program: PROGRAMA ID LLAVE_ABIERTA
@@ -18,17 +18,17 @@ program: PROGRAMA ID LLAVE_ABIERTA
 		LLAVE_CERRADA
 		{
 			for(ASTNode n : body) {
-				n.execute();
+				n.execute(symbolTable);
 			}
 		};
 	
-sentencia returns [ASTNode node]: var_decl | var_asignacion | mostrar {$node = $mostrar.node;}| condicional {$node = $condicional.node;};
+sentencia returns [ASTNode node]: var_decl {$node = $var_decl.node;} | var_asignacion {$node = $var_asignacion.node;} | mostrar {$node = $mostrar.node;}| condicional {$node = $condicional.node;} | bucle_para {$node = $bucle_para.node;};
 
-var_decl: (ENT | REAL | CADENA | BOOL) ID PUNTO_COMA
-		{symbolTable.put($ID.text, 0);};
-		
-var_asignacion: ID ASIGNAR enunciado PUNTO_COMA
-			{};
+var_decl returns [ASTNode node]: tipo_dato ID PUNTO_COMA {$node = new VarDecl($tipo_dato.text, $ID.text);} ;
+
+tipo_dato returns [ASTNode node]: ENT | REAL | CADENA | BOOL;
+
+var_asignacion returns [ASTNode node]: ID ASIGNAR enunciado PUNTO_COMA {$node = new VarAssign($ID.text, $enunciado.node);};
 			
 mostrar returns [ASTNode node]: MOSTRAR enunciado PUNTO_COMA
 		{$node = new Mostrar($enunciado.node);};
@@ -46,6 +46,9 @@ condicional returns [ASTNode node]: SI PAR_ABIERTO enunciado PAR_CERRADO
 				{
 					$node = new Si($enunciado.node,body,elseBody);
 				};
+								
+bucle_para returns [ASTNode node]: PARA PAR_ABIERTO decl=var_decl asig=var_asignacion proposicion PUNTO_COMA id1=ID ASIGNAR en=enunciado PAR_CERRADO {List<ASTNode> body = new ArrayList<ASTNode>();}
+									LLAVE_ABIERTA (sentencia {body.add($sentencia.node);})* LLAVE_CERRADA {$node = new BuclePara($decl.node, $asig.node, $proposicion.node, new VarAssign($id1.text, $en.node), body);};
 				
 enunciado returns [ASTNode node]:
 		 t1=proposicion {$node = $t1.node;} 
@@ -76,9 +79,10 @@ factor returns [ASTNode node]: t1=term {$node = $t1.node;}
 term returns [ASTNode node]: 
 		NUMERO {$node = new Constante(Double.parseDouble($NUMERO.text));}
 		| ENTERO {$node = new Constante(Integer.parseInt($ENTERO.text));}
-		| ID {$node = new Id($ID.text);}
+		| ID {$node = new VarRef($ID.text);}
 		| BOOLEAN {$node = new Constante(Boolean.parseBoolean($BOOLEAN.text));}
-		| PAR_ABIERTO expresion {$node = $expresion.node;} PAR_CERRADO;
+		| PAR_ABIERTO expresion {$node = $expresion.node;} PAR_CERRADO
+		| COMILLAS{List<String> body = new ArrayList<String>();} (ID {body.add($ID.text);})* COMILLAS {$node = new Id(body);};
 
 
 
@@ -90,12 +94,14 @@ BOOL: 'bool';
 MOSTRAR: 'mostrar';
 SI: 'si';
 SINO: 'sino';
+PARA: 'para';
 
 MAS: '+';
 MENOS: '-';
 MULT: '*';
 DIV: '/';
-
+COMENTARIO: '|-' ~[\r\n]* -> skip;
+COMENTARIO_COMPLETO: '--' .*? '--'-> skip;
 Y: '&&';
 O: '||';
 
@@ -115,6 +121,8 @@ PAR_ABIERTO: '(';
 PAR_CERRADO: ')';
 
 PUNTO_COMA: ';';
+
+COMILLAS: '"';
 
 BOOLEAN: 'true' | 'false';
 

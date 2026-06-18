@@ -1,5 +1,9 @@
 package com.lenguaje.zuju.interprete.ast;
 
+import java.util.Map;
+
+import com.lenguaje.zuju.interprete.SimboloVariable;
+
 public class Igualacion implements ASTNode {
 	private ASTNode operand1;
 	private ASTNode operand2;
@@ -15,8 +19,8 @@ public class Igualacion implements ASTNode {
 
 
 	@Override
-	public Object execute() {
-		return ((Number)operand1.execute()).doubleValue() == ((Number)operand2.execute()).doubleValue();
+	public Object execute(Map<String, SimboloVariable> symbolTable) {
+		return ((Number)operand1.execute(symbolTable)).doubleValue() == ((Number)operand2.execute(symbolTable)).doubleValue();
 	}
 
 }
