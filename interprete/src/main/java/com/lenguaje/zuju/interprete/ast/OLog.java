@@ -18,7 +18,15 @@ public class OLog implements ASTNode {
 
 	@Override
 	public Object execute(Map<String, SimboloVariable> symbolTable) {
-		return (boolean)operand1.execute(symbolTable) || (boolean)operand2.execute(symbolTable);
+		
+		Object valor1 = operand1.execute(symbolTable);
+		Object valor2 = operand2.execute(symbolTable);
+		if(valor1 instanceof Boolean && valor2 instanceof Boolean) {
+			return (boolean)valor1 || (boolean)valor2;
+		}
+		else {
+			throw new RuntimeException("Error semántico: La operacion es invalida");
+		}
 	}
 
 }

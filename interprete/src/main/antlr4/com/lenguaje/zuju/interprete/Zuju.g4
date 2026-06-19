@@ -51,10 +51,9 @@ bucle_para returns [ASTNode node]: PARA PAR_ABIERTO decl=var_decl asig=var_asign
 									LLAVE_ABIERTA (sentencia {body.add($sentencia.node);})* LLAVE_CERRADA {$node = new BuclePara($decl.node, $asig.node, $proposicion.node, new VarAssign($id1.text, $en.node), body);};
 				
 enunciado returns [ASTNode node]:
-		 t1=proposicion {$node = $t1.node;} 
+		 t1=proposicion {$node = $t1.node;}
 			(O t2=proposicion {$node = new OLog($node,$t2.node);}
-			| Y	t2=proposicion {$node = new YLog($node,$t2.node);}	
-			)*;
+			| Y	t2=proposicion {$node = new YLog($node,$t2.node);}	)*;
 				
 proposicion returns [ASTNode node]:
 		t1=expresion {$node = $t1.node;}
@@ -82,7 +81,12 @@ term returns [ASTNode node]:
 		| ID {$node = new VarRef($ID.text);}
 		| BOOLEAN {$node = new Constante(Boolean.parseBoolean($BOOLEAN.text));}
 		| PAR_ABIERTO expresion {$node = $expresion.node;} PAR_CERRADO
-		| COMILLAS{List<String> body = new ArrayList<String>();} (ID {body.add($ID.text);})* COMILLAS {$node = new Id(body);};
+		| LITERAL_CADENA { 
+		        String texto = $LITERAL_CADENA.text;        
+		        texto = texto.substring(1, texto.length() - 1);         
+		        $node = new Id(texto); 
+      			}
+      	|NO t=term {$node = new NoLog($t.node);} ;
 
 
 
@@ -104,6 +108,7 @@ COMENTARIO: '|-' ~[\r\n]* -> skip;
 COMENTARIO_COMPLETO: '--' .*? '--'-> skip;
 Y: '&&';
 O: '||';
+NO: '!';
 
 MAYORQ: '>';
 MENORQ: '<';
@@ -126,8 +131,10 @@ COMILLAS: '"';
 
 BOOLEAN: 'true' | 'false';
 
+LITERAL_CADENA: '"' ~'"'* '"';
 ID: [a-zA-Z_][a-zA-Z0-9_]*;
 ENTERO: [0-9]+;
 NUMERO: [0-9]+('.'[0-9]+);
+
 
 WS: [ \t\n\r]+ -> skip;

@@ -18,7 +18,10 @@ public class VarRef implements ASTNode {
 
 
 	@Override
-	public Object execute(Map<String, SimboloVariable> symbolTable) {		
+	public Object execute(Map<String, SimboloVariable> symbolTable) {
+		if(!symbolTable.containsKey(name)) {
+			throw new RuntimeException("Error semántico: la variable " + name + " no a sido declarada");
+		}
 		return symbolTable.get(name).getValor();
 	}
 

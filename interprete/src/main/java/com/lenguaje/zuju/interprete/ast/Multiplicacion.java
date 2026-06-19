@@ -16,11 +16,17 @@ public class Multiplicacion implements ASTNode {
 
 	@Override
 	public Object execute(Map<String, SimboloVariable> symbolTable) {
-		if(Integer.class.isInstance(operand1.execute(symbolTable)) && Integer.class.isInstance(operand2.execute(symbolTable))) {
-			return (int)operand1.execute(symbolTable) * (int) operand2.execute(symbolTable);
-		}
-		else {
-			return ((Number)operand1.execute(symbolTable)).doubleValue() * ((Number)operand2.execute(symbolTable)).doubleValue();
+		Object valor1 = operand1.execute(symbolTable);
+		Object valor2 = operand2.execute(symbolTable);
+		if(valor1 instanceof Number && valor2 instanceof Number) {
+			if(Integer.class.isInstance(valor1) && Integer.class.isInstance(valor2)) {
+				return (int)valor1 * (int) valor2;
+			}
+			else {
+				return ((Number)valor1).doubleValue() * ((Number)valor2).doubleValue();
+			}
+		}else {
+			throw new RuntimeException("Error semántico: La operacion es invalida");
 		}
 	}
 

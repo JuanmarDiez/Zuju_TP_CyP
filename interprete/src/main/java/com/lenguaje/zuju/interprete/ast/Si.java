@@ -1,7 +1,9 @@
 package com.lenguaje.zuju.interprete.ast;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.lenguaje.zuju.interprete.SimboloVariable;
 
@@ -23,6 +25,9 @@ public class Si implements ASTNode {
 
 	@Override
 	public Object execute(Map<String, SimboloVariable> symbolTable) {
+		
+		Set<String> variablesPrevias = new HashSet<>(symbolTable.keySet());
+		
 		if((boolean)condition.execute(symbolTable)) {
 			for(ASTNode n:body) {
 				n.execute(symbolTable);
@@ -32,6 +37,15 @@ public class Si implements ASTNode {
 				n.execute(symbolTable);
 			}
 		}
+		
+		Set<String> variablesActuales = new HashSet<>(symbolTable.keySet());
+	    for (String nombreVar : variablesActuales) {
+	       
+	        if (!variablesPrevias.contains(nombreVar)) {
+	           
+	            symbolTable.remove(nombreVar); 
+	        }
+	    }
 		return null;
 	}
 

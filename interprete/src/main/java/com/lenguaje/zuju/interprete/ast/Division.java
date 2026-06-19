@@ -16,17 +16,24 @@ public class Division implements ASTNode {
 
 	@Override
 	public Object execute(Map<String, SimboloVariable> symbolTable) {
-		if(((Number)operand2.execute(symbolTable)).doubleValue() != 0) {
-			double resultado = ((Number)operand1.execute(symbolTable)).doubleValue() / ((Number)operand2.execute(symbolTable)).doubleValue();
-			if (resultado % 1 == 0) {
-				return (int) resultado;
+		Object valor1 = operand1.execute(symbolTable);
+		Object valor2 = operand2.execute(symbolTable);
+		if(valor1 instanceof Number && valor2 instanceof Number) {
+			if(((Number)valor2).doubleValue() != 0) {
+				double resultado = ((Number)valor1).doubleValue() / ((Number)valor2).doubleValue();
+				if (resultado % 1 == 0) {
+					return (int) resultado;
+				}
+				else {
+					return (double) resultado;
+				}
 			}
 			else {
-				return (double) resultado;
+				throw new ArithmeticException("Error semantico: No se admite la division entre 0");
 			}
 		}
 		else {
-			throw new ArithmeticException("Error semantico: No se admite la division entre 0");
+			throw new RuntimeException("Error semántico: La operacion es invalida");
 		}
 	}
 

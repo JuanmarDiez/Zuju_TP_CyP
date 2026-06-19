@@ -20,6 +20,11 @@ public class VarDecl implements ASTNode {
 
 	@Override
 	public Object execute(Map<String, SimboloVariable> symbolTable) {
+		
+		if (symbolTable.containsKey(name)) {
+	        throw new RuntimeException("Error semántico: La variable '" + name + "' ya ha sido declarada previamente.");
+	    }
+		
 		symbolTable.put(name, new SimboloVariable(tipo,null));
 		return null;
 	}
