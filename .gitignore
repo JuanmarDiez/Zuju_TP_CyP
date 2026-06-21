@@ -1,8 +1,4 @@
-*.tokens
-*.interp
-*Lexer.java
-*Parser.java
-*Listener.java
-*BaseListener.java
-*Visitor.java
-*BaseVisitor.java
+target/
+.settings/
+.project
+.classpath
