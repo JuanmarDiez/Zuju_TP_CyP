@@ -1,3 +1,7 @@
 programa nuevo{
-		
+	si(5 < 4){
+		mostrar "esta mal";
+	}sino {
+		mostrar "esta bien";
+	}
 }

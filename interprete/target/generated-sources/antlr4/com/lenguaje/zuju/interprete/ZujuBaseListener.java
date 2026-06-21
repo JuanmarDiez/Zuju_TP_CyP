@@ -1,4 +1,4 @@
-// Generated from com\lenguaje\zuju\interprete\Zuju.g4 by ANTLR 4.5.1
+// Generated from Zuju.g4 by ANTLR 4.4
 package com.lenguaje.zuju.interprete;
 
 	import java.util.Map;
@@ -7,6 +7,7 @@ package com.lenguaje.zuju.interprete;
 
 
 import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -21,180 +22,180 @@ public class ZujuBaseListener implements ZujuListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProgram(ZujuParser.ProgramContext ctx) { }
+	@Override public void enterVar_asignacion(@NotNull ZujuParser.Var_asignacionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProgram(ZujuParser.ProgramContext ctx) { }
+	@Override public void exitVar_asignacion(@NotNull ZujuParser.Var_asignacionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSentencia(ZujuParser.SentenciaContext ctx) { }
+	@Override public void enterTipo_dato(@NotNull ZujuParser.Tipo_datoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSentencia(ZujuParser.SentenciaContext ctx) { }
+	@Override public void exitTipo_dato(@NotNull ZujuParser.Tipo_datoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVar_decl(ZujuParser.Var_declContext ctx) { }
+	@Override public void enterProgram(@NotNull ZujuParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVar_decl(ZujuParser.Var_declContext ctx) { }
+	@Override public void exitProgram(@NotNull ZujuParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTipo_dato(ZujuParser.Tipo_datoContext ctx) { }
+	@Override public void enterSentencia(@NotNull ZujuParser.SentenciaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTipo_dato(ZujuParser.Tipo_datoContext ctx) { }
+	@Override public void exitSentencia(@NotNull ZujuParser.SentenciaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVar_asignacion(ZujuParser.Var_asignacionContext ctx) { }
+	@Override public void enterExpresion(@NotNull ZujuParser.ExpresionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVar_asignacion(ZujuParser.Var_asignacionContext ctx) { }
+	@Override public void exitExpresion(@NotNull ZujuParser.ExpresionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMostrar(ZujuParser.MostrarContext ctx) { }
+	@Override public void enterCondicional(@NotNull ZujuParser.CondicionalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMostrar(ZujuParser.MostrarContext ctx) { }
+	@Override public void exitCondicional(@NotNull ZujuParser.CondicionalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCondicional(ZujuParser.CondicionalContext ctx) { }
+	@Override public void enterBucle_para(@NotNull ZujuParser.Bucle_paraContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCondicional(ZujuParser.CondicionalContext ctx) { }
+	@Override public void exitBucle_para(@NotNull ZujuParser.Bucle_paraContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBucle_para(ZujuParser.Bucle_paraContext ctx) { }
+	@Override public void enterEnunciado(@NotNull ZujuParser.EnunciadoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBucle_para(ZujuParser.Bucle_paraContext ctx) { }
+	@Override public void exitEnunciado(@NotNull ZujuParser.EnunciadoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEnunciado(ZujuParser.EnunciadoContext ctx) { }
+	@Override public void enterTerm(@NotNull ZujuParser.TermContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEnunciado(ZujuParser.EnunciadoContext ctx) { }
+	@Override public void exitTerm(@NotNull ZujuParser.TermContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProposicion(ZujuParser.ProposicionContext ctx) { }
+	@Override public void enterVar_decl(@NotNull ZujuParser.Var_declContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProposicion(ZujuParser.ProposicionContext ctx) { }
+	@Override public void exitVar_decl(@NotNull ZujuParser.Var_declContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpresion(ZujuParser.ExpresionContext ctx) { }
+	@Override public void enterMostrar(@NotNull ZujuParser.MostrarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpresion(ZujuParser.ExpresionContext ctx) { }
+	@Override public void exitMostrar(@NotNull ZujuParser.MostrarContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFactor(ZujuParser.FactorContext ctx) { }
+	@Override public void enterFactor(@NotNull ZujuParser.FactorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFactor(ZujuParser.FactorContext ctx) { }
+	@Override public void exitFactor(@NotNull ZujuParser.FactorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTerm(ZujuParser.TermContext ctx) { }
+	@Override public void enterProposicion(@NotNull ZujuParser.ProposicionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTerm(ZujuParser.TermContext ctx) { }
+	@Override public void exitProposicion(@NotNull ZujuParser.ProposicionContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEveryRule(ParserRuleContext ctx) { }
+	@Override public void enterEveryRule(@NotNull ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEveryRule(ParserRuleContext ctx) { }
+	@Override public void exitEveryRule(@NotNull ParserRuleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitTerminal(TerminalNode node) { }
+	@Override public void visitTerminal(@NotNull TerminalNode node) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitErrorNode(ErrorNode node) { }
+	@Override public void visitErrorNode(@NotNull ErrorNode node) { }
 }

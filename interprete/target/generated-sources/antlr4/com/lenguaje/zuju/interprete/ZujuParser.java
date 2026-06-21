@@ -1,4 +1,4 @@
-// Generated from com\lenguaje\zuju\interprete\Zuju.g4 by ANTLR 4.5.1
+// Generated from Zuju.g4 by ANTLR 4.4
 package com.lenguaje.zuju.interprete;
 
 	import java.util.Map;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class ZujuParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.5.1", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.4", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -28,6 +28,13 @@ public class ZujuParser extends Parser {
 		NOIGUAL=24, ASIGNAR=25, LLAVE_ABIERTA=26, LLAVE_CERRADA=27, PAR_ABIERTO=28, 
 		PAR_CERRADO=29, PUNTO_COMA=30, COMILLAS=31, BOOLEAN=32, LITERAL_CADENA=33, 
 		ID=34, ENTERO=35, NUMERO=36, WS=37;
+	public static final String[] tokenNames = {
+		"<INVALID>", "'programa'", "'ent'", "'real'", "'cadena'", "'bool'", "'mostrar'", 
+		"'si'", "'sino'", "'para'", "'+'", "'-'", "'*'", "'/'", "COMENTARIO", 
+		"COMENTARIO_COMPLETO", "'&&'", "'||'", "'!'", "'>'", "'<'", "'>='", "'<='", 
+		"'=='", "'!='", "'='", "'{'", "'}'", "'('", "')'", "';'", "'\"'", "BOOLEAN", 
+		"LITERAL_CADENA", "ID", "ENTERO", "NUMERO", "WS"
+	};
 	public static final int
 		RULE_program = 0, RULE_sentencia = 1, RULE_var_decl = 2, RULE_tipo_dato = 3, 
 		RULE_var_asignacion = 4, RULE_mostrar = 5, RULE_condicional = 6, RULE_bucle_para = 7, 
@@ -39,55 +46,11 @@ public class ZujuParser extends Parser {
 		"factor", "term"
 	};
 
-	private static final String[] _LITERAL_NAMES = {
-		null, "'programa'", "'ent'", "'real'", "'cadena'", "'bool'", "'mostrar'", 
-		"'si'", "'sino'", "'para'", "'+'", "'-'", "'*'", "'/'", null, null, "'&&'", 
-		"'||'", "'!'", "'>'", "'<'", "'>='", "'<='", "'=='", "'!='", "'='", "'{'", 
-		"'}'", "'('", "')'", "';'", "'\"'"
-	};
-	private static final String[] _SYMBOLIC_NAMES = {
-		null, "PROGRAMA", "ENT", "REAL", "CADENA", "BOOL", "MOSTRAR", "SI", "SINO", 
-		"PARA", "MAS", "MENOS", "MULT", "DIV", "COMENTARIO", "COMENTARIO_COMPLETO", 
-		"Y", "O", "NO", "MAYORQ", "MENORQ", "MAYORI", "MENORI", "IGUAL", "NOIGUAL", 
-		"ASIGNAR", "LLAVE_ABIERTA", "LLAVE_CERRADA", "PAR_ABIERTO", "PAR_CERRADO", 
-		"PUNTO_COMA", "COMILLAS", "BOOLEAN", "LITERAL_CADENA", "ID", "ENTERO", 
-		"NUMERO", "WS"
-	};
-	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
-
-	/**
-	 * @deprecated Use {@link #VOCABULARY} instead.
-	 */
-	@Deprecated
-	public static final String[] tokenNames;
-	static {
-		tokenNames = new String[_SYMBOLIC_NAMES.length];
-		for (int i = 0; i < tokenNames.length; i++) {
-			tokenNames[i] = VOCABULARY.getLiteralName(i);
-			if (tokenNames[i] == null) {
-				tokenNames[i] = VOCABULARY.getSymbolicName(i);
-			}
-
-			if (tokenNames[i] == null) {
-				tokenNames[i] = "<INVALID>";
-			}
-		}
-	}
-
-	@Override
-	@Deprecated
-	public String[] getTokenNames() {
-		return tokenNames;
-	}
-
-	@Override
-
-	public Vocabulary getVocabulary() {
-		return VOCABULARY;
-	}
-
 	@Override
 	public String getGrammarFileName() { return "Zuju.g4"; }
+
+	@Override
+	public String[] getTokenNames() { return tokenNames; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
@@ -107,13 +70,13 @@ public class ZujuParser extends Parser {
 	}
 	public static class ProgramContext extends ParserRuleContext {
 		public SentenciaContext sentencia;
-		public TerminalNode PROGRAMA() { return getToken(ZujuParser.PROGRAMA, 0); }
-		public TerminalNode ID() { return getToken(ZujuParser.ID, 0); }
-		public TerminalNode LLAVE_ABIERTA() { return getToken(ZujuParser.LLAVE_ABIERTA, 0); }
-		public TerminalNode LLAVE_CERRADA() { return getToken(ZujuParser.LLAVE_CERRADA, 0); }
 		public List<SentenciaContext> sentencia() {
 			return getRuleContexts(SentenciaContext.class);
 		}
+		public TerminalNode ID() { return getToken(ZujuParser.ID, 0); }
+		public TerminalNode LLAVE_CERRADA() { return getToken(ZujuParser.LLAVE_CERRADA, 0); }
+		public TerminalNode LLAVE_ABIERTA() { return getToken(ZujuParser.LLAVE_ABIERTA, 0); }
+		public TerminalNode PROGRAMA() { return getToken(ZujuParser.PROGRAMA, 0); }
 		public SentenciaContext sentencia(int i) {
 			return getRuleContext(SentenciaContext.class,i);
 		}
@@ -129,11 +92,6 @@ public class ZujuParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ZujuListener ) ((ZujuListener)listener).exitProgram(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ZujuVisitor ) return ((ZujuVisitor<? extends T>)visitor).visitProgram(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ProgramContext program() throws RecognitionException {
@@ -143,12 +101,9 @@ public class ZujuParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(26);
-			match(PROGRAMA);
-			setState(27);
-			match(ID);
-			setState(28);
-			match(LLAVE_ABIERTA);
+			setState(26); match(PROGRAMA);
+			setState(27); match(ID);
+			setState(28); match(LLAVE_ABIERTA);
 
 						List<ASTNode> body = new ArrayList<ASTNode>();
 					
@@ -158,8 +113,7 @@ public class ZujuParser extends Parser {
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ENT) | (1L << REAL) | (1L << CADENA) | (1L << BOOL) | (1L << MOSTRAR) | (1L << SI) | (1L << PARA) | (1L << ID))) != 0)) {
 				{
 				{
-				setState(30);
-				((ProgramContext)_localctx).sentencia = sentencia();
+				setState(30); ((ProgramContext)_localctx).sentencia = sentencia();
 				body.add(((ProgramContext)_localctx).sentencia.node);
 				}
 				}
@@ -167,8 +121,7 @@ public class ZujuParser extends Parser {
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(38);
-			match(LLAVE_CERRADA);
+			setState(38); match(LLAVE_CERRADA);
 
 						for(ASTNode n : body) {
 							n.execute(symbolTable);
@@ -194,17 +147,17 @@ public class ZujuParser extends Parser {
 		public MostrarContext mostrar;
 		public CondicionalContext condicional;
 		public Bucle_paraContext bucle_para;
-		public Var_declContext var_decl() {
-			return getRuleContext(Var_declContext.class,0);
-		}
 		public Var_asignacionContext var_asignacion() {
 			return getRuleContext(Var_asignacionContext.class,0);
+		}
+		public CondicionalContext condicional() {
+			return getRuleContext(CondicionalContext.class,0);
 		}
 		public MostrarContext mostrar() {
 			return getRuleContext(MostrarContext.class,0);
 		}
-		public CondicionalContext condicional() {
-			return getRuleContext(CondicionalContext.class,0);
+		public Var_declContext var_decl() {
+			return getRuleContext(Var_declContext.class,0);
 		}
 		public Bucle_paraContext bucle_para() {
 			return getRuleContext(Bucle_paraContext.class,0);
@@ -221,11 +174,6 @@ public class ZujuParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ZujuListener ) ((ZujuListener)listener).exitSentencia(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ZujuVisitor ) return ((ZujuVisitor<? extends T>)visitor).visitSentencia(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final SentenciaContext sentencia() throws RecognitionException {
@@ -240,40 +188,35 @@ public class ZujuParser extends Parser {
 			case BOOL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(41);
-				((SentenciaContext)_localctx).var_decl = var_decl();
+				setState(41); ((SentenciaContext)_localctx).var_decl = var_decl();
 				((SentenciaContext)_localctx).node =  ((SentenciaContext)_localctx).var_decl.node;
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(44);
-				((SentenciaContext)_localctx).var_asignacion = var_asignacion();
+				setState(44); ((SentenciaContext)_localctx).var_asignacion = var_asignacion();
 				((SentenciaContext)_localctx).node =  ((SentenciaContext)_localctx).var_asignacion.node;
 				}
 				break;
 			case MOSTRAR:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(47);
-				((SentenciaContext)_localctx).mostrar = mostrar();
+				setState(47); ((SentenciaContext)_localctx).mostrar = mostrar();
 				((SentenciaContext)_localctx).node =  ((SentenciaContext)_localctx).mostrar.node;
 				}
 				break;
 			case SI:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(50);
-				((SentenciaContext)_localctx).condicional = condicional();
+				setState(50); ((SentenciaContext)_localctx).condicional = condicional();
 				((SentenciaContext)_localctx).node =  ((SentenciaContext)_localctx).condicional.node;
 				}
 				break;
 			case PARA:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(53);
-				((SentenciaContext)_localctx).bucle_para = bucle_para();
+				setState(53); ((SentenciaContext)_localctx).bucle_para = bucle_para();
 				((SentenciaContext)_localctx).node =  ((SentenciaContext)_localctx).bucle_para.node;
 				}
 				break;
@@ -296,10 +239,10 @@ public class ZujuParser extends Parser {
 		public ASTNode node;
 		public Tipo_datoContext tipo_dato;
 		public Token ID;
+		public TerminalNode ID() { return getToken(ZujuParser.ID, 0); }
 		public Tipo_datoContext tipo_dato() {
 			return getRuleContext(Tipo_datoContext.class,0);
 		}
-		public TerminalNode ID() { return getToken(ZujuParser.ID, 0); }
 		public TerminalNode PUNTO_COMA() { return getToken(ZujuParser.PUNTO_COMA, 0); }
 		public Var_declContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -313,11 +256,6 @@ public class ZujuParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ZujuListener ) ((ZujuListener)listener).exitVar_decl(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ZujuVisitor ) return ((ZujuVisitor<? extends T>)visitor).visitVar_decl(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Var_declContext var_decl() throws RecognitionException {
@@ -326,12 +264,9 @@ public class ZujuParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(58);
-			((Var_declContext)_localctx).tipo_dato = tipo_dato();
-			setState(59);
-			((Var_declContext)_localctx).ID = match(ID);
-			setState(60);
-			match(PUNTO_COMA);
+			setState(58); ((Var_declContext)_localctx).tipo_dato = tipo_dato();
+			setState(59); ((Var_declContext)_localctx).ID = match(ID);
+			setState(60); match(PUNTO_COMA);
 			((Var_declContext)_localctx).node =  new VarDecl((((Var_declContext)_localctx).tipo_dato!=null?_input.getText(((Var_declContext)_localctx).tipo_dato.start,((Var_declContext)_localctx).tipo_dato.stop):null), (((Var_declContext)_localctx).ID!=null?((Var_declContext)_localctx).ID.getText():null));
 			}
 		}
@@ -348,10 +283,10 @@ public class ZujuParser extends Parser {
 
 	public static class Tipo_datoContext extends ParserRuleContext {
 		public ASTNode node;
-		public TerminalNode ENT() { return getToken(ZujuParser.ENT, 0); }
 		public TerminalNode REAL() { return getToken(ZujuParser.REAL, 0); }
-		public TerminalNode CADENA() { return getToken(ZujuParser.CADENA, 0); }
 		public TerminalNode BOOL() { return getToken(ZujuParser.BOOL, 0); }
+		public TerminalNode CADENA() { return getToken(ZujuParser.CADENA, 0); }
+		public TerminalNode ENT() { return getToken(ZujuParser.ENT, 0); }
 		public Tipo_datoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -363,11 +298,6 @@ public class ZujuParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ZujuListener ) ((ZujuListener)listener).exitTipo_dato(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ZujuVisitor ) return ((ZujuVisitor<? extends T>)visitor).visitTipo_dato(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -382,9 +312,8 @@ public class ZujuParser extends Parser {
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ENT) | (1L << REAL) | (1L << CADENA) | (1L << BOOL))) != 0)) ) {
 			_errHandler.recoverInline(this);
-			} else {
-				consume();
 			}
+			consume();
 			}
 		}
 		catch (RecognitionException re) {
@@ -403,11 +332,11 @@ public class ZujuParser extends Parser {
 		public Token ID;
 		public EnunciadoContext enunciado;
 		public TerminalNode ID() { return getToken(ZujuParser.ID, 0); }
-		public TerminalNode ASIGNAR() { return getToken(ZujuParser.ASIGNAR, 0); }
 		public EnunciadoContext enunciado() {
 			return getRuleContext(EnunciadoContext.class,0);
 		}
 		public TerminalNode PUNTO_COMA() { return getToken(ZujuParser.PUNTO_COMA, 0); }
+		public TerminalNode ASIGNAR() { return getToken(ZujuParser.ASIGNAR, 0); }
 		public Var_asignacionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -420,11 +349,6 @@ public class ZujuParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ZujuListener ) ((ZujuListener)listener).exitVar_asignacion(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ZujuVisitor ) return ((ZujuVisitor<? extends T>)visitor).visitVar_asignacion(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Var_asignacionContext var_asignacion() throws RecognitionException {
@@ -433,14 +357,10 @@ public class ZujuParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(65);
-			((Var_asignacionContext)_localctx).ID = match(ID);
-			setState(66);
-			match(ASIGNAR);
-			setState(67);
-			((Var_asignacionContext)_localctx).enunciado = enunciado();
-			setState(68);
-			match(PUNTO_COMA);
+			setState(65); ((Var_asignacionContext)_localctx).ID = match(ID);
+			setState(66); match(ASIGNAR);
+			setState(67); ((Var_asignacionContext)_localctx).enunciado = enunciado();
+			setState(68); match(PUNTO_COMA);
 			((Var_asignacionContext)_localctx).node =  new VarAssign((((Var_asignacionContext)_localctx).ID!=null?((Var_asignacionContext)_localctx).ID.getText():null), ((Var_asignacionContext)_localctx).enunciado.node);
 			}
 		}
@@ -458,10 +378,10 @@ public class ZujuParser extends Parser {
 	public static class MostrarContext extends ParserRuleContext {
 		public ASTNode node;
 		public EnunciadoContext enunciado;
-		public TerminalNode MOSTRAR() { return getToken(ZujuParser.MOSTRAR, 0); }
 		public EnunciadoContext enunciado() {
 			return getRuleContext(EnunciadoContext.class,0);
 		}
+		public TerminalNode MOSTRAR() { return getToken(ZujuParser.MOSTRAR, 0); }
 		public TerminalNode PUNTO_COMA() { return getToken(ZujuParser.PUNTO_COMA, 0); }
 		public MostrarContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -475,11 +395,6 @@ public class ZujuParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ZujuListener ) ((ZujuListener)listener).exitMostrar(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ZujuVisitor ) return ((ZujuVisitor<? extends T>)visitor).visitMostrar(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final MostrarContext mostrar() throws RecognitionException {
@@ -488,12 +403,9 @@ public class ZujuParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(71);
-			match(MOSTRAR);
-			setState(72);
-			((MostrarContext)_localctx).enunciado = enunciado();
-			setState(73);
-			match(PUNTO_COMA);
+			setState(71); match(MOSTRAR);
+			setState(72); ((MostrarContext)_localctx).enunciado = enunciado();
+			setState(73); match(PUNTO_COMA);
 			((MostrarContext)_localctx).node =  new Mostrar(((MostrarContext)_localctx).enunciado.node);
 			}
 		}
@@ -513,26 +425,26 @@ public class ZujuParser extends Parser {
 		public EnunciadoContext enunciado;
 		public SentenciaContext s1;
 		public SentenciaContext s2;
-		public TerminalNode SI() { return getToken(ZujuParser.SI, 0); }
-		public TerminalNode PAR_ABIERTO() { return getToken(ZujuParser.PAR_ABIERTO, 0); }
-		public EnunciadoContext enunciado() {
-			return getRuleContext(EnunciadoContext.class,0);
-		}
-		public TerminalNode PAR_CERRADO() { return getToken(ZujuParser.PAR_CERRADO, 0); }
-		public List<TerminalNode> LLAVE_ABIERTA() { return getTokens(ZujuParser.LLAVE_ABIERTA); }
-		public TerminalNode LLAVE_ABIERTA(int i) {
-			return getToken(ZujuParser.LLAVE_ABIERTA, i);
-		}
-		public List<TerminalNode> LLAVE_CERRADA() { return getTokens(ZujuParser.LLAVE_CERRADA); }
-		public TerminalNode LLAVE_CERRADA(int i) {
-			return getToken(ZujuParser.LLAVE_CERRADA, i);
-		}
-		public TerminalNode SINO() { return getToken(ZujuParser.SINO, 0); }
 		public List<SentenciaContext> sentencia() {
 			return getRuleContexts(SentenciaContext.class);
 		}
+		public EnunciadoContext enunciado() {
+			return getRuleContext(EnunciadoContext.class,0);
+		}
+		public List<TerminalNode> LLAVE_CERRADA() { return getTokens(ZujuParser.LLAVE_CERRADA); }
+		public List<TerminalNode> LLAVE_ABIERTA() { return getTokens(ZujuParser.LLAVE_ABIERTA); }
+		public TerminalNode PAR_CERRADO() { return getToken(ZujuParser.PAR_CERRADO, 0); }
 		public SentenciaContext sentencia(int i) {
 			return getRuleContext(SentenciaContext.class,i);
+		}
+		public TerminalNode SI() { return getToken(ZujuParser.SI, 0); }
+		public TerminalNode PAR_ABIERTO() { return getToken(ZujuParser.PAR_ABIERTO, 0); }
+		public TerminalNode LLAVE_ABIERTA(int i) {
+			return getToken(ZujuParser.LLAVE_ABIERTA, i);
+		}
+		public TerminalNode SINO() { return getToken(ZujuParser.SINO, 0); }
+		public TerminalNode LLAVE_CERRADA(int i) {
+			return getToken(ZujuParser.LLAVE_CERRADA, i);
 		}
 		public CondicionalContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -546,11 +458,6 @@ public class ZujuParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ZujuListener ) ((ZujuListener)listener).exitCondicional(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ZujuVisitor ) return ((ZujuVisitor<? extends T>)visitor).visitCondicional(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final CondicionalContext condicional() throws RecognitionException {
@@ -560,27 +467,21 @@ public class ZujuParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(76);
-			match(SI);
-			setState(77);
-			match(PAR_ABIERTO);
-			setState(78);
-			((CondicionalContext)_localctx).enunciado = enunciado();
-			setState(79);
-			match(PAR_CERRADO);
+			setState(76); match(SI);
+			setState(77); match(PAR_ABIERTO);
+			setState(78); ((CondicionalContext)_localctx).enunciado = enunciado();
+			setState(79); match(PAR_CERRADO);
 
 								List<ASTNode> body = new ArrayList<ASTNode>();
 							
-			setState(81);
-			match(LLAVE_ABIERTA);
+			setState(81); match(LLAVE_ABIERTA);
 			setState(87);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ENT) | (1L << REAL) | (1L << CADENA) | (1L << BOOL) | (1L << MOSTRAR) | (1L << SI) | (1L << PARA) | (1L << ID))) != 0)) {
 				{
 				{
-				setState(82);
-				((CondicionalContext)_localctx).s1 = sentencia();
+				setState(82); ((CondicionalContext)_localctx).s1 = sentencia();
 				 body.add(((CondicionalContext)_localctx).s1.node);
 				}
 				}
@@ -588,23 +489,19 @@ public class ZujuParser extends Parser {
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(90);
-			match(LLAVE_CERRADA);
-			setState(91);
-			match(SINO);
+			setState(90); match(LLAVE_CERRADA);
+			setState(91); match(SINO);
 
 								List<ASTNode> elseBody = new ArrayList<ASTNode>();
 							
-			setState(93);
-			match(LLAVE_ABIERTA);
+			setState(93); match(LLAVE_ABIERTA);
 			setState(99);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ENT) | (1L << REAL) | (1L << CADENA) | (1L << BOOL) | (1L << MOSTRAR) | (1L << SI) | (1L << PARA) | (1L << ID))) != 0)) {
 				{
 				{
-				setState(94);
-				((CondicionalContext)_localctx).s2 = sentencia();
+				setState(94); ((CondicionalContext)_localctx).s2 = sentencia();
 				elseBody.add(((CondicionalContext)_localctx).s2.node);
 				}
 				}
@@ -612,8 +509,7 @@ public class ZujuParser extends Parser {
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(102);
-			match(LLAVE_CERRADA);
+			setState(102); match(LLAVE_CERRADA);
 
 								((CondicionalContext)_localctx).node =  new Si(((CondicionalContext)_localctx).enunciado.node,body,elseBody);
 							
@@ -638,16 +534,14 @@ public class ZujuParser extends Parser {
 		public Token id1;
 		public EnunciadoContext en;
 		public SentenciaContext sentencia;
-		public TerminalNode PARA() { return getToken(ZujuParser.PARA, 0); }
-		public TerminalNode PAR_ABIERTO() { return getToken(ZujuParser.PAR_ABIERTO, 0); }
-		public ProposicionContext proposicion() {
-			return getRuleContext(ProposicionContext.class,0);
+		public List<SentenciaContext> sentencia() {
+			return getRuleContexts(SentenciaContext.class);
 		}
-		public TerminalNode PUNTO_COMA() { return getToken(ZujuParser.PUNTO_COMA, 0); }
-		public TerminalNode ASIGNAR() { return getToken(ZujuParser.ASIGNAR, 0); }
-		public TerminalNode PAR_CERRADO() { return getToken(ZujuParser.PAR_CERRADO, 0); }
-		public TerminalNode LLAVE_ABIERTA() { return getToken(ZujuParser.LLAVE_ABIERTA, 0); }
 		public TerminalNode LLAVE_CERRADA() { return getToken(ZujuParser.LLAVE_CERRADA, 0); }
+		public TerminalNode PARA() { return getToken(ZujuParser.PARA, 0); }
+		public TerminalNode PAR_CERRADO() { return getToken(ZujuParser.PAR_CERRADO, 0); }
+		public TerminalNode PAR_ABIERTO() { return getToken(ZujuParser.PAR_ABIERTO, 0); }
+		public TerminalNode PUNTO_COMA() { return getToken(ZujuParser.PUNTO_COMA, 0); }
 		public Var_declContext var_decl() {
 			return getRuleContext(Var_declContext.class,0);
 		}
@@ -658,11 +552,13 @@ public class ZujuParser extends Parser {
 		public EnunciadoContext enunciado() {
 			return getRuleContext(EnunciadoContext.class,0);
 		}
-		public List<SentenciaContext> sentencia() {
-			return getRuleContexts(SentenciaContext.class);
-		}
+		public TerminalNode LLAVE_ABIERTA() { return getToken(ZujuParser.LLAVE_ABIERTA, 0); }
 		public SentenciaContext sentencia(int i) {
 			return getRuleContext(SentenciaContext.class,i);
+		}
+		public TerminalNode ASIGNAR() { return getToken(ZujuParser.ASIGNAR, 0); }
+		public ProposicionContext proposicion() {
+			return getRuleContext(ProposicionContext.class,0);
 		}
 		public Bucle_paraContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -676,11 +572,6 @@ public class ZujuParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ZujuListener ) ((ZujuListener)listener).exitBucle_para(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ZujuVisitor ) return ((ZujuVisitor<? extends T>)visitor).visitBucle_para(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Bucle_paraContext bucle_para() throws RecognitionException {
@@ -690,37 +581,25 @@ public class ZujuParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(105);
-			match(PARA);
-			setState(106);
-			match(PAR_ABIERTO);
-			setState(107);
-			((Bucle_paraContext)_localctx).decl = var_decl();
-			setState(108);
-			((Bucle_paraContext)_localctx).asig = var_asignacion();
-			setState(109);
-			((Bucle_paraContext)_localctx).proposicion = proposicion();
-			setState(110);
-			match(PUNTO_COMA);
-			setState(111);
-			((Bucle_paraContext)_localctx).id1 = match(ID);
-			setState(112);
-			match(ASIGNAR);
-			setState(113);
-			((Bucle_paraContext)_localctx).en = enunciado();
-			setState(114);
-			match(PAR_CERRADO);
+			setState(105); match(PARA);
+			setState(106); match(PAR_ABIERTO);
+			setState(107); ((Bucle_paraContext)_localctx).decl = var_decl();
+			setState(108); ((Bucle_paraContext)_localctx).asig = var_asignacion();
+			setState(109); ((Bucle_paraContext)_localctx).proposicion = proposicion();
+			setState(110); match(PUNTO_COMA);
+			setState(111); ((Bucle_paraContext)_localctx).id1 = match(ID);
+			setState(112); match(ASIGNAR);
+			setState(113); ((Bucle_paraContext)_localctx).en = enunciado();
+			setState(114); match(PAR_CERRADO);
 			List<ASTNode> body = new ArrayList<ASTNode>();
-			setState(116);
-			match(LLAVE_ABIERTA);
+			setState(116); match(LLAVE_ABIERTA);
 			setState(122);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ENT) | (1L << REAL) | (1L << CADENA) | (1L << BOOL) | (1L << MOSTRAR) | (1L << SI) | (1L << PARA) | (1L << ID))) != 0)) {
 				{
 				{
-				setState(117);
-				((Bucle_paraContext)_localctx).sentencia = sentencia();
+				setState(117); ((Bucle_paraContext)_localctx).sentencia = sentencia();
 				body.add(((Bucle_paraContext)_localctx).sentencia.node);
 				}
 				}
@@ -728,8 +607,7 @@ public class ZujuParser extends Parser {
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(125);
-			match(LLAVE_CERRADA);
+			setState(125); match(LLAVE_CERRADA);
 			((Bucle_paraContext)_localctx).node =  new BuclePara(((Bucle_paraContext)_localctx).decl.node, ((Bucle_paraContext)_localctx).asig.node, ((Bucle_paraContext)_localctx).proposicion.node, new VarAssign((((Bucle_paraContext)_localctx).id1!=null?((Bucle_paraContext)_localctx).id1.getText():null), ((Bucle_paraContext)_localctx).en.node), body);
 			}
 		}
@@ -748,19 +626,19 @@ public class ZujuParser extends Parser {
 		public ASTNode node;
 		public ProposicionContext t1;
 		public ProposicionContext t2;
-		public List<ProposicionContext> proposicion() {
-			return getRuleContexts(ProposicionContext.class);
-		}
 		public ProposicionContext proposicion(int i) {
 			return getRuleContext(ProposicionContext.class,i);
 		}
-		public List<TerminalNode> O() { return getTokens(ZujuParser.O); }
 		public TerminalNode O(int i) {
 			return getToken(ZujuParser.O, i);
 		}
 		public List<TerminalNode> Y() { return getTokens(ZujuParser.Y); }
+		public List<TerminalNode> O() { return getTokens(ZujuParser.O); }
 		public TerminalNode Y(int i) {
 			return getToken(ZujuParser.Y, i);
+		}
+		public List<ProposicionContext> proposicion() {
+			return getRuleContexts(ProposicionContext.class);
 		}
 		public EnunciadoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -774,11 +652,6 @@ public class ZujuParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ZujuListener ) ((ZujuListener)listener).exitEnunciado(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ZujuVisitor ) return ((ZujuVisitor<? extends T>)visitor).visitEnunciado(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final EnunciadoContext enunciado() throws RecognitionException {
@@ -788,8 +661,7 @@ public class ZujuParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(128);
-			((EnunciadoContext)_localctx).t1 = proposicion();
+			setState(128); ((EnunciadoContext)_localctx).t1 = proposicion();
 			((EnunciadoContext)_localctx).node =  ((EnunciadoContext)_localctx).t1.node;
 			setState(140);
 			_errHandler.sync(this);
@@ -800,19 +672,15 @@ public class ZujuParser extends Parser {
 				switch (_input.LA(1)) {
 				case O:
 					{
-					setState(130);
-					match(O);
-					setState(131);
-					((EnunciadoContext)_localctx).t2 = proposicion();
+					setState(130); match(O);
+					setState(131); ((EnunciadoContext)_localctx).t2 = proposicion();
 					((EnunciadoContext)_localctx).node =  new OLog(_localctx.node,((EnunciadoContext)_localctx).t2.node);
 					}
 					break;
 				case Y:
 					{
-					setState(134);
-					match(Y);
-					setState(135);
-					((EnunciadoContext)_localctx).t2 = proposicion();
+					setState(134); match(Y);
+					setState(135); ((EnunciadoContext)_localctx).t2 = proposicion();
 					((EnunciadoContext)_localctx).node =  new YLog(_localctx.node,((EnunciadoContext)_localctx).t2.node);
 					}
 					break;
@@ -841,32 +709,32 @@ public class ZujuParser extends Parser {
 		public ASTNode node;
 		public ExpresionContext t1;
 		public ExpresionContext t2;
-		public List<ExpresionContext> expresion() {
-			return getRuleContexts(ExpresionContext.class);
-		}
-		public ExpresionContext expresion(int i) {
-			return getRuleContext(ExpresionContext.class,i);
-		}
-		public List<TerminalNode> MAYORQ() { return getTokens(ZujuParser.MAYORQ); }
 		public TerminalNode MAYORQ(int i) {
 			return getToken(ZujuParser.MAYORQ, i);
 		}
-		public List<TerminalNode> MENORQ() { return getTokens(ZujuParser.MENORQ); }
-		public TerminalNode MENORQ(int i) {
-			return getToken(ZujuParser.MENORQ, i);
-		}
-		public List<TerminalNode> IGUAL() { return getTokens(ZujuParser.IGUAL); }
-		public TerminalNode IGUAL(int i) {
-			return getToken(ZujuParser.IGUAL, i);
-		}
-		public List<TerminalNode> MAYORI() { return getTokens(ZujuParser.MAYORI); }
-		public TerminalNode MAYORI(int i) {
-			return getToken(ZujuParser.MAYORI, i);
-		}
-		public List<TerminalNode> MENORI() { return getTokens(ZujuParser.MENORI); }
 		public TerminalNode MENORI(int i) {
 			return getToken(ZujuParser.MENORI, i);
 		}
+		public List<ExpresionContext> expresion() {
+			return getRuleContexts(ExpresionContext.class);
+		}
+		public TerminalNode MENORQ(int i) {
+			return getToken(ZujuParser.MENORQ, i);
+		}
+		public List<TerminalNode> MENORQ() { return getTokens(ZujuParser.MENORQ); }
+		public List<TerminalNode> MENORI() { return getTokens(ZujuParser.MENORI); }
+		public List<TerminalNode> MAYORQ() { return getTokens(ZujuParser.MAYORQ); }
+		public ExpresionContext expresion(int i) {
+			return getRuleContext(ExpresionContext.class,i);
+		}
+		public TerminalNode IGUAL(int i) {
+			return getToken(ZujuParser.IGUAL, i);
+		}
+		public TerminalNode MAYORI(int i) {
+			return getToken(ZujuParser.MAYORI, i);
+		}
+		public List<TerminalNode> MAYORI() { return getTokens(ZujuParser.MAYORI); }
+		public List<TerminalNode> IGUAL() { return getTokens(ZujuParser.IGUAL); }
 		public ProposicionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -879,11 +747,6 @@ public class ZujuParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ZujuListener ) ((ZujuListener)listener).exitProposicion(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ZujuVisitor ) return ((ZujuVisitor<? extends T>)visitor).visitProposicion(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ProposicionContext proposicion() throws RecognitionException {
@@ -893,8 +756,7 @@ public class ZujuParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(143);
-			((ProposicionContext)_localctx).t1 = expresion();
+			setState(143); ((ProposicionContext)_localctx).t1 = expresion();
 			((ProposicionContext)_localctx).node =  ((ProposicionContext)_localctx).t1.node;
 			setState(167);
 			_errHandler.sync(this);
@@ -905,46 +767,36 @@ public class ZujuParser extends Parser {
 				switch (_input.LA(1)) {
 				case MAYORQ:
 					{
-					setState(145);
-					match(MAYORQ);
-					setState(146);
-					((ProposicionContext)_localctx).t2 = expresion();
+					setState(145); match(MAYORQ);
+					setState(146); ((ProposicionContext)_localctx).t2 = expresion();
 					((ProposicionContext)_localctx).node =  new Comparacion(_localctx.node,((ProposicionContext)_localctx).t2.node);
 					}
 					break;
 				case MENORQ:
 					{
-					setState(149);
-					match(MENORQ);
-					setState(150);
-					((ProposicionContext)_localctx).t2 = expresion();
+					setState(149); match(MENORQ);
+					setState(150); ((ProposicionContext)_localctx).t2 = expresion();
 					((ProposicionContext)_localctx).node =  new Comparacion(((ProposicionContext)_localctx).t2.node,_localctx.node);
 					}
 					break;
 				case IGUAL:
 					{
-					setState(153);
-					match(IGUAL);
-					setState(154);
-					((ProposicionContext)_localctx).t2 = expresion();
+					setState(153); match(IGUAL);
+					setState(154); ((ProposicionContext)_localctx).t2 = expresion();
 					((ProposicionContext)_localctx).node =  new Igualacion(_localctx.node, ((ProposicionContext)_localctx).t2.node);
 					}
 					break;
 				case MAYORI:
 					{
-					setState(157);
-					match(MAYORI);
-					setState(158);
-					((ProposicionContext)_localctx).t2 = expresion();
+					setState(157); match(MAYORI);
+					setState(158); ((ProposicionContext)_localctx).t2 = expresion();
 					((ProposicionContext)_localctx).node =  new ComparacionIg(_localctx.node,((ProposicionContext)_localctx).t2.node);
 					}
 					break;
 				case MENORI:
 					{
-					setState(161);
-					match(MENORI);
-					setState(162);
-					((ProposicionContext)_localctx).t2 = expresion();
+					setState(161); match(MENORI);
+					setState(162); ((ProposicionContext)_localctx).t2 = expresion();
 					((ProposicionContext)_localctx).node =  new ComparacionIg(((ProposicionContext)_localctx).t2.node,_localctx.node);
 					}
 					break;
@@ -973,13 +825,13 @@ public class ZujuParser extends Parser {
 		public ASTNode node;
 		public FactorContext t1;
 		public FactorContext t2;
+		public List<TerminalNode> MENOS() { return getTokens(ZujuParser.MENOS); }
 		public List<FactorContext> factor() {
 			return getRuleContexts(FactorContext.class);
 		}
 		public FactorContext factor(int i) {
 			return getRuleContext(FactorContext.class,i);
 		}
-		public List<TerminalNode> MENOS() { return getTokens(ZujuParser.MENOS); }
 		public TerminalNode MENOS(int i) {
 			return getToken(ZujuParser.MENOS, i);
 		}
@@ -999,11 +851,6 @@ public class ZujuParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ZujuListener ) ((ZujuListener)listener).exitExpresion(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ZujuVisitor ) return ((ZujuVisitor<? extends T>)visitor).visitExpresion(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ExpresionContext expresion() throws RecognitionException {
@@ -1013,8 +860,7 @@ public class ZujuParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(170);
-			((ExpresionContext)_localctx).t1 = factor();
+			setState(170); ((ExpresionContext)_localctx).t1 = factor();
 			((ExpresionContext)_localctx).node =  ((ExpresionContext)_localctx).t1.node;
 			setState(182);
 			_errHandler.sync(this);
@@ -1026,20 +872,16 @@ public class ZujuParser extends Parser {
 				case MAS:
 					{
 					{
-					setState(172);
-					match(MAS);
-					setState(173);
-					((ExpresionContext)_localctx).t2 = factor();
+					setState(172); match(MAS);
+					setState(173); ((ExpresionContext)_localctx).t2 = factor();
 					((ExpresionContext)_localctx).node =  new Adicion(_localctx.node,((ExpresionContext)_localctx).t2.node);
 					}
 					}
 					break;
 				case MENOS:
 					{
-					setState(176);
-					match(MENOS);
-					setState(177);
-					((ExpresionContext)_localctx).t2 = factor();
+					setState(176); match(MENOS);
+					setState(177); ((ExpresionContext)_localctx).t2 = factor();
 					((ExpresionContext)_localctx).node =  new Sustraccion(_localctx.node,((ExpresionContext)_localctx).t2.node);
 					}
 					break;
@@ -1068,6 +910,9 @@ public class ZujuParser extends Parser {
 		public ASTNode node;
 		public TermContext t1;
 		public TermContext t2;
+		public TerminalNode MULT(int i) {
+			return getToken(ZujuParser.MULT, i);
+		}
 		public List<TermContext> term() {
 			return getRuleContexts(TermContext.class);
 		}
@@ -1075,9 +920,6 @@ public class ZujuParser extends Parser {
 			return getRuleContext(TermContext.class,i);
 		}
 		public List<TerminalNode> MULT() { return getTokens(ZujuParser.MULT); }
-		public TerminalNode MULT(int i) {
-			return getToken(ZujuParser.MULT, i);
-		}
 		public List<TerminalNode> DIV() { return getTokens(ZujuParser.DIV); }
 		public TerminalNode DIV(int i) {
 			return getToken(ZujuParser.DIV, i);
@@ -1094,11 +936,6 @@ public class ZujuParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ZujuListener ) ((ZujuListener)listener).exitFactor(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ZujuVisitor ) return ((ZujuVisitor<? extends T>)visitor).visitFactor(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final FactorContext factor() throws RecognitionException {
@@ -1108,8 +945,7 @@ public class ZujuParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(185);
-			((FactorContext)_localctx).t1 = term();
+			setState(185); ((FactorContext)_localctx).t1 = term();
 			((FactorContext)_localctx).node =  ((FactorContext)_localctx).t1.node;
 			setState(197);
 			_errHandler.sync(this);
@@ -1120,19 +956,15 @@ public class ZujuParser extends Parser {
 				switch (_input.LA(1)) {
 				case MULT:
 					{
-					setState(187);
-					match(MULT);
-					setState(188);
-					((FactorContext)_localctx).t2 = term();
+					setState(187); match(MULT);
+					setState(188); ((FactorContext)_localctx).t2 = term();
 					((FactorContext)_localctx).node =  new Multiplicacion(_localctx.node,((FactorContext)_localctx).t2.node);
 					}
 					break;
 				case DIV:
 					{
-					setState(191);
-					match(DIV);
-					setState(192);
-					((FactorContext)_localctx).t2 = term();
+					setState(191); match(DIV);
+					setState(192); ((FactorContext)_localctx).t2 = term();
 					((FactorContext)_localctx).node =  new Division(_localctx.node,((FactorContext)_localctx).t2.node);
 					}
 					break;
@@ -1166,20 +998,20 @@ public class ZujuParser extends Parser {
 		public ExpresionContext expresion;
 		public Token LITERAL_CADENA;
 		public TermContext t;
-		public TerminalNode NUMERO() { return getToken(ZujuParser.NUMERO, 0); }
-		public TerminalNode ENTERO() { return getToken(ZujuParser.ENTERO, 0); }
 		public TerminalNode ID() { return getToken(ZujuParser.ID, 0); }
-		public TerminalNode BOOLEAN() { return getToken(ZujuParser.BOOLEAN, 0); }
-		public TerminalNode PAR_ABIERTO() { return getToken(ZujuParser.PAR_ABIERTO, 0); }
+		public TerminalNode NO() { return getToken(ZujuParser.NO, 0); }
 		public ExpresionContext expresion() {
 			return getRuleContext(ExpresionContext.class,0);
 		}
-		public TerminalNode PAR_CERRADO() { return getToken(ZujuParser.PAR_CERRADO, 0); }
-		public TerminalNode LITERAL_CADENA() { return getToken(ZujuParser.LITERAL_CADENA, 0); }
-		public TerminalNode NO() { return getToken(ZujuParser.NO, 0); }
 		public TermContext term() {
 			return getRuleContext(TermContext.class,0);
 		}
+		public TerminalNode NUMERO() { return getToken(ZujuParser.NUMERO, 0); }
+		public TerminalNode LITERAL_CADENA() { return getToken(ZujuParser.LITERAL_CADENA, 0); }
+		public TerminalNode PAR_CERRADO() { return getToken(ZujuParser.PAR_CERRADO, 0); }
+		public TerminalNode BOOLEAN() { return getToken(ZujuParser.BOOLEAN, 0); }
+		public TerminalNode PAR_ABIERTO() { return getToken(ZujuParser.PAR_ABIERTO, 0); }
+		public TerminalNode ENTERO() { return getToken(ZujuParser.ENTERO, 0); }
 		public TermContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1192,11 +1024,6 @@ public class ZujuParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ZujuListener ) ((ZujuListener)listener).exitTerm(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ZujuVisitor ) return ((ZujuVisitor<? extends T>)visitor).visitTerm(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final TermContext term() throws RecognitionException {
@@ -1208,52 +1035,44 @@ public class ZujuParser extends Parser {
 			case NUMERO:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(200);
-				((TermContext)_localctx).NUMERO = match(NUMERO);
+				setState(200); ((TermContext)_localctx).NUMERO = match(NUMERO);
 				((TermContext)_localctx).node =  new Constante(Double.parseDouble((((TermContext)_localctx).NUMERO!=null?((TermContext)_localctx).NUMERO.getText():null)));
 				}
 				break;
 			case ENTERO:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(202);
-				((TermContext)_localctx).ENTERO = match(ENTERO);
+				setState(202); ((TermContext)_localctx).ENTERO = match(ENTERO);
 				((TermContext)_localctx).node =  new Constante(Integer.parseInt((((TermContext)_localctx).ENTERO!=null?((TermContext)_localctx).ENTERO.getText():null)));
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(204);
-				((TermContext)_localctx).ID = match(ID);
+				setState(204); ((TermContext)_localctx).ID = match(ID);
 				((TermContext)_localctx).node =  new VarRef((((TermContext)_localctx).ID!=null?((TermContext)_localctx).ID.getText():null));
 				}
 				break;
 			case BOOLEAN:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(206);
-				((TermContext)_localctx).BOOLEAN = match(BOOLEAN);
+				setState(206); ((TermContext)_localctx).BOOLEAN = match(BOOLEAN);
 				((TermContext)_localctx).node =  new Constante(Boolean.parseBoolean((((TermContext)_localctx).BOOLEAN!=null?((TermContext)_localctx).BOOLEAN.getText():null)));
 				}
 				break;
 			case PAR_ABIERTO:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(208);
-				match(PAR_ABIERTO);
-				setState(209);
-				((TermContext)_localctx).expresion = expresion();
+				setState(208); match(PAR_ABIERTO);
+				setState(209); ((TermContext)_localctx).expresion = expresion();
 				((TermContext)_localctx).node =  ((TermContext)_localctx).expresion.node;
-				setState(211);
-				match(PAR_CERRADO);
+				setState(211); match(PAR_CERRADO);
 				}
 				break;
 			case LITERAL_CADENA:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(213);
-				((TermContext)_localctx).LITERAL_CADENA = match(LITERAL_CADENA);
+				setState(213); ((TermContext)_localctx).LITERAL_CADENA = match(LITERAL_CADENA);
 				 
 						        String texto = (((TermContext)_localctx).LITERAL_CADENA!=null?((TermContext)_localctx).LITERAL_CADENA.getText():null);        
 						        texto = texto.substring(1, texto.length() - 1);         
@@ -1264,10 +1083,8 @@ public class ZujuParser extends Parser {
 			case NO:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(215);
-				match(NO);
-				setState(216);
-				((TermContext)_localctx).t = term();
+				setState(215); match(NO);
+				setState(216); ((TermContext)_localctx).t = term();
 				((TermContext)_localctx).node =  new NoLog(((TermContext)_localctx).t.node);
 				}
 				break;
