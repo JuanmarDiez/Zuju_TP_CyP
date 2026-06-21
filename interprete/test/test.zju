@@ -1,7 +1,6 @@
 programa nuevo{
-	si(5 < 4){
-		mostrar "esta mal";
-	}sino {
-		mostrar "esta bien";
+	para(ent x=0; x<5; x = x +1){
+		mostrar x;
 	}
+	
 }

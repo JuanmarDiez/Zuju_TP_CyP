@@ -9,17 +9,15 @@ import com.lenguaje.zuju.interprete.SimboloVariable;
 
 public class BuclePara implements ASTNode {
 	private ASTNode declaracion;
-    private ASTNode inicializacion;
 	private ASTNode proposicion;
 	private ASTNode incremento;
 	private List<ASTNode> body;
 	
 
-	public BuclePara(ASTNode declaracion, ASTNode inicializacion, ASTNode proposicion, ASTNode incremento,
+	public BuclePara(ASTNode declaracion, ASTNode proposicion, ASTNode incremento,
 			List<ASTNode> body) {
 		super();
 		this.declaracion = declaracion;
-		this.inicializacion = inicializacion;
 		this.proposicion = proposicion;
 		this.incremento = incremento;
 		this.body = body;
@@ -33,9 +31,7 @@ public class BuclePara implements ASTNode {
 		Set<String> variablesPrevias = new HashSet<>(symbolTable.keySet());
 		
 		
-		declaracion.execute(symbolTable);
-
-        inicializacion.execute(symbolTable);        
+		declaracion.execute(symbolTable);     
 		
       		if(!(proposicion.execute(symbolTable) instanceof Boolean) ) {
       			throw new RuntimeException("Error semántico: la condición debe ser un resultado booleano");

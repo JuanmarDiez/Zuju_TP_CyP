@@ -24,7 +24,13 @@ program: PROGRAMA ID LLAVE_ABIERTA
 	
 sentencia returns [ASTNode node]: var_decl {$node = $var_decl.node;} | var_asignacion {$node = $var_asignacion.node;} | mostrar {$node = $mostrar.node;}| condicional {$node = $condicional.node;} | bucle_para {$node = $bucle_para.node;};
 
-var_decl returns [ASTNode node]: tipo_dato ID PUNTO_COMA {$node = new VarDecl($tipo_dato.text, $ID.text);} ;
+var_decl returns [ASTNode node]: tipo_dato ID (ASIGNAR enun=enunciado)? PUNTO_COMA {
+																				if ($enun.ctx != null) {
+																			              $node = new VarDecl($tipo_dato.text, $ID.text, $enun.node);
+																			          } else {
+																			              $node = new VarDecl($tipo_dato.text, $ID.text);
+																			          }
+																			};
 
 tipo_dato returns [ASTNode node]: ENT | REAL | CADENA | BOOL;
 
@@ -47,8 +53,8 @@ condicional returns [ASTNode node]: SI PAR_ABIERTO enunciado PAR_CERRADO
 					$node = new Si($enunciado.node,body,elseBody);
 				};
 								
-bucle_para returns [ASTNode node]: PARA PAR_ABIERTO decl=var_decl asig=var_asignacion proposicion PUNTO_COMA id1=ID ASIGNAR en=enunciado PAR_CERRADO {List<ASTNode> body = new ArrayList<ASTNode>();}
-									LLAVE_ABIERTA (sentencia {body.add($sentencia.node);})* LLAVE_CERRADA {$node = new BuclePara($decl.node, $asig.node, $proposicion.node, new VarAssign($id1.text, $en.node), body);};
+bucle_para returns [ASTNode node]: PARA PAR_ABIERTO decl=var_decl proposicion PUNTO_COMA id1=ID ASIGNAR en=enunciado PAR_CERRADO {List<ASTNode> body = new ArrayList<ASTNode>();}
+									LLAVE_ABIERTA (sentencia {body.add($sentencia.node);})* LLAVE_CERRADA {$node = new BuclePara($decl.node, $proposicion.node, new VarAssign($id1.text, $en.node), body);};
 				
 enunciado returns [ASTNode node]:
 		 t1=proposicion {$node = $t1.node;}
