@@ -1,6 +1,73 @@
 programa nuevo{
-	para(ent x=0; x<5; x = x +1){
+|- Declaracion de variables 
+	--ent x;
+	x = 5;
+	real y = 10.65;
+	cadena z = "hola mundo";
+	bool w = true;
+	
+	mostrar x;
+	mostrar y;
+	mostrar z;
+	mostrar w;--
+
+|- Operaciones con variables	
+|- Se admiten suma, resta, multiplicacion, division, comparaciones e igualaciones 
+	--ent x = 5 + 5;
+	ent x2 = 10 * 5;
+	ent x3 = 10 / 5;
+	real y = 10.75 - 5.50;
+	cadena z = "hola" + "mundo";
+	bool w = 5 < 3;
+	bool v = 5 <= 5;
+	bool u = !true;
+	
+	
+	mostrar x;
+	mostrar x2;
+	mostrar x3;
+	mostrar y;
+	mostrar z;
+	mostrar w;
+	mostrar v;
+	mostrar u;--
+
+|- Condicional SI
+	--
+	si	( true || false){
+		mostrar "resultado verdadero";
+		}
+	sino{
+		mostrar "resultado falso";
+	}--
+
+|- Bucle PARA	
+	--
+	para(ent x=0;x<5; x = x + 1){
 		mostrar x;
 	}
+	
+	|-mostrar x;
+		--
+	
+	
+|-Errores semanticos
+	
+	|-ent x = "hola";
+	
+	--ent x = 5;
+	ent x = 8;--
+	
+	--ent 15 / 0;--
+	
+	|- cadena x = 4 + "hola";
+	
+	--si(5 + 5){
+		mostrar "resultado verdadero";
+		}
+	sino{
+		mostrar "resultado falso";
+	}--
+	
 	
 }

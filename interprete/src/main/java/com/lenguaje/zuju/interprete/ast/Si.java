@@ -26,6 +26,10 @@ public class Si implements ASTNode {
 	@Override
 	public Object execute(Map<String, SimboloVariable> symbolTable) {
 		
+		if(!(condition.execute(symbolTable) instanceof Boolean) ) {
+  			throw new RuntimeException("Error semántico: la condición debe ser un resultado booleano");
+  		}
+		
 		Set<String> variablesPrevias = new HashSet<>(symbolTable.keySet());
 		
 		if((boolean)condition.execute(symbolTable)) {

@@ -34,7 +34,15 @@ public class VarDecl implements ASTNode {
 		Object valor = null;
 		
 		if (this.expresion != null) {
-	        valor = this.expresion.execute(symbolTable); 
+			valor = this.expresion.execute(symbolTable); 
+			if((tipo.equals("ent") &&  Integer.class.isInstance(valor)) 
+					|| (tipo.equals("real") && valor instanceof Double)
+					|| (tipo.equals("cadena") && valor instanceof String)
+					|| (tipo.equals("bool") && valor instanceof Boolean) ) {
+			}
+			else {
+				throw new RuntimeException("Error semántico: El tipo de dato que se intenta guardar en " + name + " no es soportado por la variable");
+			}
 	    }
 
 		symbolTable.put(name, new SimboloVariable(tipo,valor));
