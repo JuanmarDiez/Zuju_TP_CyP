@@ -14,8 +14,8 @@ programa nuevo{
 |- Operaciones con variables	
 |- Se admiten suma, resta, multiplicacion, division, comparaciones e igualaciones 
 	--ent x = 5 + 5;
-	ent x2 = 10 * 5;
-	ent x3 = 10 / 5;
+	ent x2 = x * 5;
+	ent x3 = x2 / x;
 	real y = 10.75 - 5.50;
 	cadena z = "hola" + "mundo";
 	bool w = 5 < 3;
@@ -52,6 +52,8 @@ programa nuevo{
 	
 	
 |-Errores semanticos
+	
+	|-mostrar y;
 	
 	|-ent x = "hola";
 	
